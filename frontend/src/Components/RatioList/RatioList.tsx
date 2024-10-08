@@ -1,5 +1,4 @@
 import React from 'react'
-import { TestDataCompany } from '../Table/testData';
 
 type Props = {
     config: any;
@@ -28,7 +27,7 @@ const RatioList = ({config, data}: Props) => {
   });
   return (
     <div className="bg-white shadow rounded-lg p-4 ml-4 mt-4 mb-4 p-4 sm:px-6 h-full">
-      <ul role="list" className="divide-y divide-gray-200">
+      <ul className="divide-y divide-gray-200">
         {renderedRows}
       </ul>
     </div>

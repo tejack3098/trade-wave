@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CompanyBalanceSheet, CompanyCashFlow } from '../../company';
+import { CompanyBalanceSheet } from '../../company';
 import { useOutletContext } from 'react-router';
 import { getBalanceSheet } from '../../api';
 import RatioList from '../RatioList/RatioList';
@@ -7,42 +7,60 @@ import RatioList from '../RatioList/RatioList';
 type Props = {}
 
 const config = [
-    {
-      label: "Date",
-      render: (company: CompanyCashFlow) => company.date,
-    },
-    {
-      label: "Operating Cashflow",
-      render: (company: CompanyCashFlow) => company.operatingCashFlow,
-    },
-    {
-      label: "Investing Cashflow",
-      render: (company: CompanyCashFlow) =>
-        company.netCashUsedForInvestingActivites,
-    },
-    {
-      label: "Financing Cashflow",
-      render: (company: CompanyCashFlow) =>
-        company.netCashUsedProvidedByFinancingActivities,
-    },
-    {
-      label: "Cash At End of Period",
-      render: (company: CompanyCashFlow) => company.cashAtEndOfPeriod,
-    },
-    {
-      label: "CapEX",
-      render: (company: CompanyCashFlow) => company.capitalExpenditure,
-    },
-    {
-      label: "Issuance Of Stock",
-      render: (company: CompanyCashFlow) => company.commonStockIssued,
-    },
-    {
-      label: "Free Cash Flow",
-      render: (company: CompanyCashFlow) => company.freeCashFlow,
-    },
-  ];
-  
+  {
+    label: <div className="font-bold">Total Assets</div>,
+    render: (company: CompanyBalanceSheet) => company.totalAssets,
+  },
+  {
+    label: "Current Assets",
+    render: (company: CompanyBalanceSheet) => company.totalCurrentAssets,
+  },
+  {
+    label: "Total Cash",
+    render: (company: CompanyBalanceSheet) => company.cashAndCashEquivalents,
+  },
+  {
+    label: "Property & equipment",
+    render: (company: CompanyBalanceSheet) => company.propertyPlantEquipmentNet,
+  },
+  {
+    label: "Intangible Assets",
+    render: (company: CompanyBalanceSheet) => company.intangibleAssets,
+  },
+  {
+    label: "Long Term Debt",
+    render: (company: CompanyBalanceSheet) => company.longTermDebt,
+  },
+  {
+    label: "Total Debt",
+    render: (company: CompanyBalanceSheet) => company.otherCurrentLiabilities,
+  },
+  {
+    label: <div className="font-bold">Total Liabilites</div>,
+    render: (company: CompanyBalanceSheet) => company.totalLiabilities,
+  },
+  {
+    label: "Current Liabilities",
+    render: (company: CompanyBalanceSheet) => company.totalCurrentLiabilities,
+  },
+  {
+    label: "Long-Term Debt",
+    render: (company: CompanyBalanceSheet) => company.longTermDebt,
+  },
+  {
+    label: "Long-Term Income Taxes",
+    render: (company: CompanyBalanceSheet) => company.otherLiabilities,
+  },
+  {
+    label: "Stakeholder's Equity",
+    render: (company: CompanyBalanceSheet) => company.totalStockholdersEquity,
+  },
+  {
+    label: "Retained Earnings",
+    render: (company: CompanyBalanceSheet) => company.retainedEarnings,
+  },
+];
+
 
 const BalanceSheet = (props: Props) => {
     const ticker = useOutletContext<string>();
@@ -52,9 +70,10 @@ const BalanceSheet = (props: Props) => {
         const balanceSheetFetch = async () => {
             const result = await getBalanceSheet(ticker!);
             setBalanceSheet(result?.data[0]);
+            console.log(result?.data[0]);
         };
         balanceSheetFetch();
-    });
+    },[ticker]);
 
   return <>
     {

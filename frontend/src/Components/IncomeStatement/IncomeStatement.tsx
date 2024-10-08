@@ -70,11 +70,11 @@ const IncomeStatement = (props: Props) => {
 
     useEffect(() => {
         const incomeStatementFetch = async () => {
-            const result = await getIncomeStatement(ticker);
+            const result = await getIncomeStatement(ticker!);
             setIncomeStatement(result!.data);
         };
         incomeStatementFetch();
-    }, [])
+    }, [ticker])
 
   return <>
     { incomeStatement ? (

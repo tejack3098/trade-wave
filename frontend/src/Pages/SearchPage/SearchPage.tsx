@@ -2,7 +2,6 @@ import React, { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { searchCompanies } from '../../api';
 import { CompanySearch } from '../../company';
 import CardList from '../../Components/CardList/CardList';
-import Navbar from '../../Components/Navbar/Navbar';
 import ListPortfolio from '../../Components/Portfolio/ListPortfolio/ListPortfolio';
 import Search from '../../Components/Search/Search';
 
@@ -19,18 +18,18 @@ const SearchPage = (props: Props) => {
         setSearch(e.target.value);
     }
 
-    const onClick = async (e: SyntheticEvent) => {
-        const result = await searchCompanies(search);
-        if(typeof result === "string"){
-        setServerError(result);
-        }
-        else if (Array.isArray(result.data)){
-        setSearchResult(result.data);
-        }
+    // const onClick = async (e: SyntheticEvent) => {
+    //     const result = await searchCompanies(search);
+    //     if(typeof result === "string"){
+    //     setServerError(result);
+    //     }
+    //     else if (Array.isArray(result.data)){
+    //     setSearchResult(result.data);
+    //     }
 
-        console.log(searchResult);
+    //     console.log(searchResult);
         
-    };
+    // };
 
     const onPortfolioCreate = (e: any) => {
         e.preventDefault();

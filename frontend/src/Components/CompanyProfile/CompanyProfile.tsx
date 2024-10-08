@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CompanyKeyMetrics } from '../../company';
-import { useOutlet, useOutletContext } from 'react-router';
+import { useOutletContext } from 'react-router';
 import { getKeyMetrics } from '../../api';
 import RatioList from '../RatioList/RatioList';
 
@@ -73,11 +73,11 @@ const CompanyProfile = (props: Props) => {
   
   useEffect(() => {
       const getCompanyKeyMetrics = async () => {
-          const value = await getKeyMetrics(ticker);
+          const value = await getKeyMetrics(ticker!);
           setCompanyData(value?.data[0]);
       };
       getCompanyKeyMetrics();
-  }, [])
+  }, [ticker])
   return <>
     {
         companyData ? (

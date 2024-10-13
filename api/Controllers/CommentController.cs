@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Comment;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -15,14 +16,16 @@ namespace api.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
+        private readonly IStockRepository _stockRepository;
 
-        public CommentController(ICommentRepository commentRepository)
+        public CommentController(ICommentRepository commentRepository, IStockRepository stockRepository)
         {
             _commentRepository = commentRepository;
+            _stockRepository = stockRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAll()
         {
             var comments = await _commentRepository.GetAllAsync();
             var commentsDto = comments.Select(comment => comment.ToCommentDto());
@@ -30,7 +33,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync([FromRoute]int id)
+        public async Task<IActionResult> GetById([FromRoute]int id)
         {
             var comment = await _commentRepository.GetByIdAsync(id);
             if (comment == null)
@@ -39,6 +42,20 @@ namespace api.Controllers
             }
 
             return Ok(comment.ToCommentDto());
+        }
+
+        [HttpPost("{stockId}")]
+        public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentDto commentDto)
+        {
+
+            if (!await _stockRepository.StockExists(stockId))
+            {
+                return NotFound();
+            }
+
+            var comment = commentDto.ToCommentFromCreate(stockId);
+            await _commentRepository.CreateAsync(comment);
+            return CreatedAtAction(nameof(GetById), new { id = comment.Id }, comment.ToCommentDto());
         }
 
     }

@@ -3,3 +3,14 @@
 frontend/.env
 
 .fake
+api/bin/Debug/net8.0/api.deps.json
+api/bin/Debug/net8.0/api.deps.json
+api/obj/Debug/net8.0/api.csproj.AssemblyReference.cache
+api/obj/Debug/net8.0/api.csproj.FileListAbsolute.txt
+api/obj/project.assets.json
+api/bin/Debug/net8.0/api.deps.json
+api/obj/Debug/net8.0/api.assets.cache
+api/obj/Debug/net8.0/api.assets.cache
+/api/obj/Debug/net8.0
+/api/bin/Debug
+/api/obj

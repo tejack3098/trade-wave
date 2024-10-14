@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Helpers;
 using api.Models;
 
 namespace api.Interfaces
 {
     public interface ICommentRepository
     {
-        public Task<List<Comment>> GetAllAsync();
+        public Task<List<Comment>> GetAllAsync(CommentQueryObject queryObject);
 
         public Task<Comment?> GetByIdAsync(int id);
 

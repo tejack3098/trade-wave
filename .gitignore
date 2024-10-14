@@ -17,3 +17,5 @@ api/obj/Debug/net8.0/api.assets.cache
 /api/obj
 /api/bin
 /api/obj
+/.vs
+/api/obj

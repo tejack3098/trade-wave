@@ -14,6 +14,8 @@ namespace api.Interfaces
 
         Task<Stock?> GetByIdAsync(int id);
 
+        Task<Stock?> GetBySymbolAsync(string symbol);
+
         Task<Stock> CreateAsync(Stock stock);
 
         Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto updateStockDto);

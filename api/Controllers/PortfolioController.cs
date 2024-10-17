@@ -104,7 +104,7 @@ namespace api.Controllers
             if (!userPortfolio.Any(p => p.Symbol.ToLower() == symbol.ToLower())) 
                 return BadRequest("Stock not found in Portfolio");
 
-            var filteredStock = userPortfolio.Where(s => s.Symbol.ToLower() != symbol.ToLower()).ToList();
+            var filteredStock = userPortfolio.Where(s => s.Symbol.ToLower() == symbol.ToLower()).ToList();
 
             if(filteredStock.Count == 1)
             {

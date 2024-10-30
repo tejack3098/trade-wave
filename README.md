@@ -69,7 +69,7 @@ TradeWave is a real-time web application designed to help users manage and analy
    - The frontend will run on `http://localhost:3000`, while the backend API will be available on `http://localhost:5000`.
 
 ## Project Structure
-
+```bash
 TradeWave/
 │
 ├── backend/                     # .NET Core API Backend
@@ -86,3 +86,23 @@ TradeWave/
 │   └── .env                     # Environment variables for frontend
 │
 └── README.md                    # Project documentation
+```
+
+## Usage
+   
+    - User Authentication: Register or log in to access personalized portfolio management features.
+    - Add Stocks to Portfolio: Search for stocks by ticker symbol and add them to your portfolio.
+    - View Financial Data: Access real-time company data, income statements, balance sheets, and market trends.
+    - Analyze News Sentiment (Future): Get market sentiment analysis based on the latest news.
+    - Risk Assessment (Future): Assess the risk level of your portfolio and receive suggestions for diversification.
+
+## Future Enhancements
+   ```
+    - Sentiment Analysis on News: Integrate sentiment analysis to provide users with insights into market trends and stock performance.
+    - Risk Assessment Tools: Implement portfolio risk assessment based on diversification and modern portfolio theory (MPT).
+    - Advanced User Analytics: Enable deeper insights and analytics for power users.
+   ```
+
+### License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

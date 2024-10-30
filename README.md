@@ -67,3 +67,22 @@ TradeWave is a real-time web application designed to help users manage and analy
 
 4. **Access the Application**
    - The frontend will run on `http://localhost:3000`, while the backend API will be available on `http://localhost:5000`.
+
+## Project Structure
+
+TradeWave/
+│
+├── backend/                     # .NET Core API Backend
+│   ├── Controllers/             # API controllers for handling requests
+│   ├── Models/                  # Data models for the application
+│   ├── Services/                # Business logic and external API integration
+│   └── appsettings.json         # Configuration file
+│
+├── frontend/                    # React Frontend
+│   ├── src/
+│   │   ├── components/          # Reusable UI components
+│   │   ├── services/            # API calls to the backend
+│   │   └── pages/               # Main page components
+│   └── .env                     # Environment variables for frontend
+│
+└── README.md                    # Project documentation
